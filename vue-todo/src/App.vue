@@ -38,10 +38,10 @@ export default {
       localStorage.removeItem(todoItem.item);
     },
     toggleOneItem: function(todoItem, index) {
-      todoItem.completed = !todoItem.completed;  // 아래와 같이 수정
-      // this.todoItems(index).completed = !this.todoItems(index).completed
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+      // todoItem.completed = !todoItem.completed;  // data를 직접 변경하기 위해 아래와 같이 수정, 하위 컴퍼넌트와의 이벤트버스를 통해 data 변경은 지양
+      this.todoItems[index].completed = !this.todoItems[index].completed
+      localStorage.removeItem(this.todoItems[index].item);
+      localStorage.setItem(this.todoItems[index].item, JSON.stringify(this.todoItems[index]));
     },
     clearAllItem: function() {
       localStorage.clear();
