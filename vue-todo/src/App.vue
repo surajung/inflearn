@@ -16,7 +16,7 @@ import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
 
 export default {
-  data: function() {
+  data() {
     return {
       todoItems: []
     }
@@ -28,27 +28,27 @@ export default {
     TodoFooter: TodoFooter
   },
   methods: {
-    addOneItem: function(todoItem) {
+    addOneItem(todoItem) {
       const obj = {completed: false, item: todoItem};
       localStorage.setItem(todoItem, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
-    removeOneItem: function(todoItem, index) {
+    removeOneItem(todoItem, index) {
       this.todoItems.splice(index, 1);
       localStorage.removeItem(todoItem.item);
     },
-    toggleOneItem: function(todoItem, index) {
+    toggleOneItem(todoItem, index) {
       // todoItem.completed = !todoItem.completed;  // data를 직접 변경하기 위해 아래와 같이 수정, 하위 컴퍼넌트와의 이벤트버스를 통해 data 변경은 지양
       this.todoItems[index].completed = !this.todoItems[index].completed
       localStorage.removeItem(this.todoItems[index].item);
       localStorage.setItem(this.todoItems[index].item, JSON.stringify(this.todoItems[index]));
     },
-    clearAllItem: function() {
+    clearAllItem() {
       localStorage.clear();
       this.todoItems = [];
     }
   },
-  created: function() {
+  created() {
     if (localStorage.length > 0) {
       for (var i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
