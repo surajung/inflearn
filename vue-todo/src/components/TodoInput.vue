@@ -13,7 +13,6 @@
       <div slot="body">
         아무것도 입력하지 않았습니다
       </div>
-      <div slot="footer"></div>
     </Modal>    
   </div>
 </template>
@@ -71,5 +70,8 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
+}
+.closeModalBtn {
+  color: #42b983;
 }
 </style>
