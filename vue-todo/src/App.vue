@@ -20,8 +20,6 @@ export default {
     TodoList,
     TodoFooter
   },
-  methods: {
-  },
 }
 </script>
 
